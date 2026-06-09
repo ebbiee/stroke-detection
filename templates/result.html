@@ -307,7 +307,7 @@
 <body>
 
 <header>
-  <h1>🩺 Early Stroke Detection — Result</h1>
+  <h1>Early Stroke Detection — Result</h1>
 </header>
 
 <div class="card">
@@ -363,7 +363,7 @@
 
   <!-- ── SHAP: TOP CONTRIBUTING FACTORS ────────────────────── -->
   {% if result.shap_factors %}
-  <div class="section-title">🔍 Top Contributing Factors (SHAP Explainability)</div>
+  <div class="section-title">Top Contributing Factors</div>
   <div class="shap-box">
 
     <p class="shap-intro">
@@ -383,15 +383,6 @@
         <!-- Rank -->
         <div class="shap-rank">{{ loop.index }}</div>
 
-        <!-- Direction arrow -->
-        <div class="shap-arrow">
-          {% if factor.direction == 'increased' %}
-            <span style="color:#e74c3c">▲</span>
-          {% else %}
-            <span style="color:#27ae60">▼</span>
-          {% endif %}
-        </div>
-
         <!-- Feature label + bar -->
         <div class="shap-body">
           <div class="shap-label-row">
@@ -405,11 +396,6 @@
                  style="width: {{ ((factor.abs_value / max_abs) * 100) | round | int }}%;">
             </div>
           </div>
-        </div>
-
-        <!-- SHAP value -->
-        <div class="shap-value">
-          {{ '%+.4f' | format(factor.shap_value) }}
         </div>
 
       </li>
@@ -427,19 +413,17 @@
         Decreased stroke risk
       </span>
     </div>
-
-    <p class="shap-model-note">Model: {{ result.model_name }}</p>
   </div>
   {% endif %}
 
   <!-- ── CLINICAL ADVICE ────────────────────────────────────── -->
   <div class="advice">
     {% if result.prediction == 1 %}
-      <strong>⚠️ Recommendation:</strong> This patient profile shows a high risk
+      <strong>Recommendation:</strong> This patient profile shows a high risk
       of stroke. Please consult a neurologist or healthcare professional immediately.
       Lifestyle interventions (diet, exercise, medication adherence) are strongly advised.
     {% else %}
-      <strong>✅ Recommendation:</strong> Current profile suggests a lower stroke risk.
+      <strong>Recommendation:</strong> Current profile suggests a lower stroke risk.
       Maintain a healthy lifestyle, monitor blood pressure and glucose levels regularly,
       and attend routine medical check-ups.
     {% endif %}
@@ -457,8 +441,8 @@
 
   <!-- ── ACTION BUTTONS ─────────────────────────────────────── -->
   <div class="btn-row">
-    <a href="/" class="btn btn-primary">🔄 New Assessment</a>
-    <a href="javascript:window.print()" class="btn btn-secondary">🖨️ Print Result</a>
+    <a href="/" class="btn btn-primary"> New Assessment</a>
+    <a href="javascript:window.print()" class="btn btn-secondary"> Print Result</a>
   </div>
 
 </div>
